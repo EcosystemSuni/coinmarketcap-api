@@ -84,7 +84,7 @@ class CoinMarketCap {
       fetcher: this.fetcher,
       url: `${this.url}/cryptocurrency/info`,
       config: this.config,
-      query: sanitizeIdAndSymbol(args.id, args.symbol)
+      query: sanitizeIdAndSymbol(args.id, args.symbol, args.address)
     })
   }
 
@@ -197,13 +197,9 @@ class CoinMarketCap {
   }
 }
 
-const sanitizeIdAndSymbol = (id, symbol) => {
+const sanitizeIdAndSymbol = (id, symbol, address) => {
   if (id && symbol) {
     throw new Error('ID and symbol cannot be passed in at the same time.')
-  }
-
-  if (!id && !symbol) {
-    throw new Error('Either ID or symbol is required to be passed in.')
   }
 
   if (id instanceof Array) {
@@ -214,7 +210,7 @@ const sanitizeIdAndSymbol = (id, symbol) => {
     symbol = symbol.join(',')
   }
 
-  return { id, symbol }
+  return { id, symbol, address }
 }
 
 const createRequest = (args = {}) => {
