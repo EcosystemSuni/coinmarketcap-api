@@ -117,6 +117,7 @@ client.getMetadata({id: '1'}).then(console.log).catch(console.error)
 client.getMetadata({id: [1, 2]}).then(console.log).catch(console.error)
 client.getMetadata({symbol: 'BTC,ETH'}).then(console.log).catch(console.error)
 client.getMetadata({symbol: ['BTC', 'ETH']}).then(console.log).catch(console.error)
+client.getMetadata({address: '0x05633822a3f6af31eada04e69124d1aef12012fb'}).then(console.log).catch(console.error)
 ```
 
 ### getTickers
